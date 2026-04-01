@@ -5,11 +5,11 @@ export function CTA() {
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
           Ready to upgrade your
           <br />
-          YouTube experience?
+          YouTube experience on Mac?
         </h2>
         <p className="text-white/50 mb-10 max-w-lg mx-auto">
-          Download Tubo for free and start watching YouTube the way
-          it was meant to be on macOS.
+          Download the best YouTube desktop app for macOS — free, native,
+          and built for how you actually use your Mac.
         </p>
         <a
           href="#download"

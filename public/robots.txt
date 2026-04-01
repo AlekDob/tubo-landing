@@ -1,0 +1,5 @@
+# Tubo Landing Page
+User-agent: *
+Allow: /
+
+Sitemap: https://tubo.app/sitemap.xml

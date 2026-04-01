@@ -15,7 +15,7 @@ const FEATURES: FeatureCard[] = [
     icon: "🖼",
     title: "Picture-in-Picture",
     description:
-      "Floating always-on-top video window. Watch while you work.",
+      "YouTube PiP on macOS — floating always-on-top video window. Watch while you work.",
   },
   {
     icon: "⌨️",
@@ -62,6 +62,9 @@ function SectionHeader() {
         <br />
         <span className="text-white/40">Nothing you don&apos;t.</span>
       </h2>
+      <p className="mt-4 text-white/40 max-w-lg mx-auto">
+        A lightweight YouTube client for macOS — no ads injection, no tracking, just a better experience.
+      </p>
     </div>
   );
 }

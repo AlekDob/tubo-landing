@@ -27,14 +27,14 @@ function HeroContent() {
   return (
     <>
       <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight animate-fade-in-up">
-        YouTube, reinvented
+        The native YouTube app
         <br />
         for <span className="text-[#FF0033]">macOS</span>
       </h1>
       <p className="mt-6 text-lg md:text-xl text-white/60 max-w-2xl mx-auto leading-relaxed animate-fade-in-up-delay-1">
-        A native wrapper that gives you multi-tab browsing,
-        Picture-in-Picture, media keys, and Liquid Glass UI — all
-        without leaving your desktop.
+        Tubo is a free YouTube desktop app for Mac with multi-tab browsing,
+        Picture-in-Picture, media keys, and Liquid Glass UI — built
+        with pure Apple frameworks, no Electron.
       </p>
     </>
   );
