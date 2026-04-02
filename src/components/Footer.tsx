@@ -38,7 +38,7 @@ function FooterLinks() {
 function BuiltBy() {
   return (
     <p className="text-sm text-white/30">
-      Built with ❤️ by Alek Dobrohotov
+      Built with ❤️ by <a href="https://alekdob.com" target="_blank" rel="noopener noreferrer" className="hover:text-white/60 transition-colors underline underline-offset-2">Alek Dobrohotov</a>
     </p>
   );
 }
