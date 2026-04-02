@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export function Hero() {
   return (
     <section className="relative pt-32 pb-20 px-6 overflow-hidden">
@@ -5,7 +7,7 @@ export function Hero() {
       <div className="max-w-4xl mx-auto text-center relative z-10">
         <HeroContent />
         <HeroActions />
-        <MacOSWindowMockup />
+        <AppScreenshot />
       </div>
     </section>
   );
@@ -61,30 +63,19 @@ function HeroActions() {
   );
 }
 
-function MacOSWindowMockup() {
+function AppScreenshot() {
   return (
     <div className="mt-16 animate-fade-in-up-delay-3 animate-float">
-      <div className="max-w-3xl mx-auto rounded-xl overflow-hidden border border-white/10 shadow-2xl">
-        <WindowTitleBar />
-        <div className="bg-[#1a1a1a] h-64 md:h-80 flex items-center justify-center">
-          <span className="text-white/20 text-sm">
-            Tubo — YouTube Player
-          </span>
-        </div>
+      <div className="max-w-3xl mx-auto rounded-xl overflow-hidden shadow-2xl">
+        <Image
+          src="/tubo-screenshot.webp"
+          alt="Tubo — YouTube player nativo per macOS con Liquid Glass UI"
+          width={1568}
+          height={1065}
+          priority
+          className="w-full h-auto"
+        />
       </div>
-    </div>
-  );
-}
-
-function WindowTitleBar() {
-  return (
-    <div className="bg-[#2a2a2a] px-4 py-3 flex items-center gap-2">
-      <span className="w-3 h-3 rounded-full bg-[#FF5F57]" />
-      <span className="w-3 h-3 rounded-full bg-[#FEBC2E]" />
-      <span className="w-3 h-3 rounded-full bg-[#28C840]" />
-      <span className="ml-4 text-xs text-white/30">
-        youtube.com
-      </span>
     </div>
   );
 }
