@@ -3,6 +3,7 @@ import { Inter, Instrument_Serif } from "next/font/google";
 import { OpenPanelComponent } from "@openpanel/nextjs";
 import { APP_VERSION, AUTHOR, DOWNLOAD_URL, OPENPANEL, SITE_NAME, SITE_URL } from "@/lib/site";
 import { MotionProvider } from "@/components/MotionProvider";
+import { DownloadModalProvider } from "@/components/DownloadModal";
 import "./globals.css";
 import "./motion.css";
 
@@ -93,7 +94,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           trackOutgoingLinks
           trackAttributes
         />
-        <MotionProvider>{children}</MotionProvider>
+        <MotionProvider>
+          <DownloadModalProvider>{children}</DownloadModalProvider>
+        </MotionProvider>
       </body>
     </html>
   );

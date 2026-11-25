@@ -34,6 +34,11 @@ body {
   font-family: var(--font-sans), system-ui, sans-serif;
 }
 
+/* The download modal is open: the page behind must not scroll. */
+html:has(dialog[open]) {
+  overflow: hidden;
+}
+
 ::selection {
   background: var(--accent);
   color: #fff;

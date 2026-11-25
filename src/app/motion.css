@@ -147,6 +147,23 @@
   .glow-breathe { animation: glow-breathe 7s ease-in-out infinite; }
   .btn-download:hover .btn-sheen::after { animation: sheen 0.9s ease; }
 
+  /* Download modal: rises and fades in, the backdrop fades with it. allow-discrete lets the
+     closing transition run before <dialog> switches to display:none. */
+  .download-dialog,
+  .download-dialog::backdrop {
+    opacity: 0;
+    transition: opacity 0.25s ease, translate 0.4s cubic-bezier(0.2, 0.7, 0.2, 1),
+      overlay 0.4s allow-discrete, display 0.4s allow-discrete;
+  }
+  .download-dialog { translate: 0 16px; }
+  .download-dialog[open],
+  .download-dialog[open]::backdrop { opacity: 1; translate: 0 0; }
+  @starting-style {
+    .download-dialog[open],
+    .download-dialog[open]::backdrop { opacity: 0; }
+    .download-dialog[open] { translate: 0 16px; }
+  }
+
   @supports (animation-timeline: view()) {
     .reveal,
     .slide-from-left,

@@ -52,10 +52,57 @@ export default function PrivacyPage() {
           </p>
           <ul className="list-disc pl-6 mt-3 space-y-2">
             <li>No cookies are used, and there is no cookie banner to accept</li>
-            <li>No account, name or email is collected</li>
+            <li>Analytics never collect your name or email</li>
             <li>Statistics are aggregated: pages viewed, referrer, country, browser and device type</li>
             <li>The data is not sold or shared with advertisers</li>
           </ul>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold text-white mb-3">
+            Newsletter and Waitlists
+          </h2>
+          <p>
+            When you download Tubo from this website you can leave your email.
+            What happens to it depends on what you choose:
+          </p>
+          <ul className="list-disc pl-6 mt-3 space-y-2">
+            <li>
+              If you tick &quot;Send me Tubo news&quot;, your email joins the Tubo
+              newsletter. We use it only to tell you about Tubo: updates and new
+              versions.
+            </li>
+            <li>
+              If you join the Linux or Windows waitlist, we use your email only to
+              tell you when Tubo is available for that platform.
+            </li>
+            <li>
+              If you leave the box unticked, your email is not added to any list.
+              We receive a one-off notification of the download and nothing else.
+            </li>
+          </ul>
+          <p className="mt-3">
+            Emails are stored with{" "}
+            <a
+              href="https://resend.com/legal/privacy-policy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-red-400 underline hover:text-red-300"
+            >
+              Resend
+            </a>
+            , the service we use to send them, together with the platform you
+            chose, the signup date and that you signed up on tubo.you. We never
+            sell or share them. Every email has an unsubscribe link, and you can
+            ask us to delete your data at any time by writing to{" "}
+            <a
+              href="mailto:gmail@alekdob.com"
+              className="text-red-400 underline hover:text-red-300"
+            >
+              gmail@alekdob.com
+            </a>
+            .
+          </p>
         </section>
 
         <section>

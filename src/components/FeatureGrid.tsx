@@ -7,7 +7,7 @@ const DETAILS = [
   { title: "Always on top", body: "Pin the player above every other window while you work or chat." },
   { title: "Free, really", body: "No subscription, no trial, no sign-up. Download it and keep it." },
   { title: "Native and light", body: "Swift and WebKit. No Electron, no extra runtime eating your battery." },
-  { title: "Nothing collected", body: "No analytics, no tracking, no account. Your viewing stays between you and YouTube." },
+  { title: "Nothing collected", body: "The app collects nothing: no tracking, no account. Your viewing stays between you and YouTube." },
 ] as const;
 
 // Not shipped yet: shown as "coming soon", never as available.
