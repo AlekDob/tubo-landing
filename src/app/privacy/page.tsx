@@ -153,10 +153,10 @@ export default function PrivacyPage() {
             If you have any questions about this Privacy Policy, you can contact
             us at{" "}
             <a
-              href="mailto:alekdobrohotov@gmail.com"
+              href="mailto:gmail@alekdob.com"
               className="text-red-400 underline hover:text-red-300"
             >
-              alekdobrohotov@gmail.com
+              gmail@alekdob.com
             </a>
             .
           </p>
