@@ -17,7 +17,7 @@ export function Download() {
           should feel on a Mac.
         </p>
         <div className="mt-10 flex flex-col items-center gap-4">
-          <DownloadButton />
+          <DownloadButton location="cta" />
           <p className="text-xs text-faint">{REQUIREMENTS}</p>
         </div>
         <ul className="mt-10 flex flex-wrap justify-center gap-2">
@@ -30,12 +30,12 @@ export function Download() {
   );
 }
 
-// Soft red light behind the CTA, echoing the warm glow in the hero photo.
+// Soft red light behind the CTA, echoing the warm glow in the hero photo. It breathes slowly (.glow-breathe).
 function Glow() {
   return (
     <div
       aria-hidden
-      className="pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[900px] max-w-[160vw] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-25 blur-3xl"
+      className="glow-breathe pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[900px] max-w-[160vw] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-25 blur-3xl"
       style={{ background: "radial-gradient(ellipse, var(--accent) 0%, transparent 65%)" }}
     />
   );

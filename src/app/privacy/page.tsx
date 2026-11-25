@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Privacy Policy — Tubo",
@@ -9,7 +10,7 @@ export default function PrivacyPage() {
   return (
     <main className="min-h-screen bg-[#0a0a0a] text-white px-6 py-20 max-w-3xl mx-auto">
       <h1 className="text-4xl font-bold mb-8">Privacy Policy</h1>
-      <p className="text-neutral-400 mb-12">Last updated: April 9, 2026</p>
+      <p className="text-neutral-400 mb-12">Last updated: November 25, 2026</p>
 
       <div className="space-y-8 text-neutral-300 leading-relaxed">
         <section>
@@ -17,17 +18,18 @@ export default function PrivacyPage() {
           <p>
             Tubo is a native macOS application that provides a browser-like
             wrapper for YouTube using Apple&apos;s WKWebView. Your privacy is
-            important to us. This policy explains what data Tubo collects (or
-            rather, does not collect).
+            important to us. This policy explains what data the Tubo app collects
+            (or rather, does not collect), and the anonymous statistics this
+            website uses.
           </p>
         </section>
 
         <section>
           <h2 className="text-xl font-semibold text-white mb-3">
-            Data Collection
+            Data Collection in the App
           </h2>
           <p>
-            Tubo does <strong>not</strong> collect, store, or transmit any
+            The Tubo app does <strong>not</strong> collect, store, or transmit any
             personal data. Specifically:
           </p>
           <ul className="list-disc pl-6 mt-3 space-y-2">
@@ -36,6 +38,23 @@ export default function PrivacyPage() {
             <li>No usage data is sent to our servers</li>
             <li>No cookies are set by Tubo itself</li>
             <li>No third-party advertising frameworks are used</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold text-white mb-3">
+            This Website
+          </h2>
+          <p>
+            The website tubo.you (not the app) uses OpenPanel, a privacy-friendly
+            analytics tool, to count visits and Download button clicks. It runs
+            on our own server in the European Union.
+          </p>
+          <ul className="list-disc pl-6 mt-3 space-y-2">
+            <li>No cookies are used, and there is no cookie banner to accept</li>
+            <li>No account, name or email is collected</li>
+            <li>Statistics are aggregated: pages viewed, referrer, country, browser and device type</li>
+            <li>The data is not sold or shared with advertisers</li>
           </ul>
         </section>
 
@@ -98,9 +117,9 @@ export default function PrivacyPage() {
       </div>
 
       <div className="mt-16 pt-8 border-t border-neutral-800 text-neutral-500 text-sm">
-        <a href="/" className="hover:text-white transition-colors">
+        <Link href="/" className="hover:text-white transition-colors">
           Back to Tubo
-        </a>
+        </Link>
       </div>
     </main>
   );

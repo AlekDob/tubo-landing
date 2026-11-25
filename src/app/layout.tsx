@@ -1,7 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Instrument_Serif } from "next/font/google";
-import { APP_VERSION, AUTHOR, DOWNLOAD_URL, SITE_NAME, SITE_URL } from "@/lib/site";
+import { OpenPanelComponent } from "@openpanel/nextjs";
+import { APP_VERSION, AUTHOR, DOWNLOAD_URL, OPENPANEL, SITE_NAME, SITE_URL } from "@/lib/site";
+import { MotionProvider } from "@/components/MotionProvider";
 import "./globals.css";
+import "./motion.css";
 
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
 const serif = Instrument_Serif({
@@ -83,7 +86,15 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-screen flex flex-col">{children}</body>
+      <body className="min-h-screen flex flex-col">
+        <OpenPanelComponent
+          {...OPENPANEL}
+          trackScreenViews
+          trackOutgoingLinks
+          trackAttributes
+        />
+        <MotionProvider>{children}</MotionProvider>
+      </body>
     </html>
   );
 }

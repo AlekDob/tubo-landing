@@ -1,4 +1,5 @@
 import { DownloadButton } from "./DownloadButton";
+import { Wordmark } from "./Logo";
 
 const NAV_LINKS = [
   { href: "#features", label: "Features" },
@@ -17,17 +18,9 @@ export function Navbar() {
               {label}
             </a>
           ))}
-          <DownloadButton size="sm" label="Download" />
+          <DownloadButton size="sm" label="Download" location="navbar" />
         </div>
       </nav>
     </header>
-  );
-}
-
-export function Wordmark() {
-  return (
-    <a href="/" className="text-xl font-semibold tracking-tight" aria-label="Tubo home">
-      Tub<span className="text-accent">o</span>
-    </a>
   );
 }

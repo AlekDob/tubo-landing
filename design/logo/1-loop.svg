@@ -1,0 +1,15 @@
+<!-- Tubo "Loop": a glass tube bent into the "o" of Tubo, half filled with warm red light. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="liquid" x1="0" y1="30" x2="0" y2="54" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff7a52"/>
+      <stop offset="1" stop-color="#e5281d"/>
+    </linearGradient>
+    <clipPath id="level"><rect x="0" y="33" width="64" height="31"/></clipPath>
+  </defs>
+  <circle cx="32" cy="32" r="19" fill="none" stroke="#fff" stroke-opacity=".16" stroke-width="11"/>
+  <circle cx="32" cy="32" r="19" fill="none" stroke="url(#liquid)" stroke-width="11" clip-path="url(#level)"/>
+  <circle cx="32" cy="32" r="24.5" fill="none" stroke="#fff" stroke-opacity=".22"/>
+  <circle cx="32" cy="32" r="13.5" fill="none" stroke="#fff" stroke-opacity=".12"/>
+  <path d="M16.4 24.6a17.5 17.5 0 0 1 8.2-8.2" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="2.6" stroke-linecap="round"/>
+</svg>

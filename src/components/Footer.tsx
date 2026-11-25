@@ -1,5 +1,5 @@
 import { AUTHOR } from "@/lib/site";
-import { Wordmark } from "./Navbar";
+import { Wordmark } from "./Logo";
 
 const FOOTER_LINKS = [
   { href: "/#features", label: "Features" },

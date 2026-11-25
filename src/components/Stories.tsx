@@ -2,6 +2,7 @@ import pipDesk from "@/assets/pip-desk.webp";
 import mediaKeys from "@/assets/media-keys.webp";
 import livingRoom from "@/assets/living-room.webp";
 import { FeatureStory, type Story } from "./FeatureStory";
+import { PipFloat } from "./PipFloat";
 
 // Only features that ship today (see Tubo/CLAUDE.md roadmap). Photos are generated with Higgsfield.
 const STORIES: Story[] = [
@@ -11,6 +12,7 @@ const STORIES: Story[] = [
     body: "Pop any video into the native macOS Picture-in-Picture window. Or keep the player floating above everything else, so the tutorial stays right next to your code.",
     image: pipDesk,
     alt: "A developer at night with a code editor open and a small floating video in the corner of the screen",
+    overlay: <PipFloat />,
   },
   {
     label: "Media keys",

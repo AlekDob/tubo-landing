@@ -1,0 +1,16 @@
+<!-- Favicon: the Tubo "Loop" mark on a dark tile, so it stays visible on light browser tabs. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="liquid" x1="0" y1="30" x2="0" y2="54" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff7a52"/>
+      <stop offset="1" stop-color="#e5281d"/>
+    </linearGradient>
+    <clipPath id="level"><polygon points="0 27 64 39 64 64 0 64"/></clipPath>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#141212"/>
+  <g transform="translate(5.6 5.6) scale(.825)">
+    <circle cx="32" cy="32" r="19" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="12"/>
+    <circle cx="32" cy="32" r="19" fill="none" stroke="url(#liquid)" stroke-width="12" clip-path="url(#level)"/>
+    <path d="M16.4 24.6a17.5 17.5 0 0 1 8.2-8.2" fill="none" stroke="#fff" stroke-opacity=".75" stroke-width="2.8" stroke-linecap="round"/>
+  </g>
+</svg>

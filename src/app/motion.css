@@ -1,0 +1,164 @@
+/*
+ * Tubo motion layer. Rules:
+ * - Only transform and opacity animate (compositor-only, 60fps, no layout shift).
+ * - Everything sits behind `prefers-reduced-motion: no-preference`: with reduced motion
+ *   (or no support) the page is static and fully visible.
+ * - Scroll reveals use CSS scroll timelines: no JS, and browsers without support simply
+ *   show the content in place.
+ */
+
+@keyframes hero-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes hero-image-in {
+  from { opacity: 0; transform: translateY(48px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes word-rise {
+  from { transform: translateY(105%); }
+  to { transform: none; }
+}
+
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes slide-from-left {
+  from { opacity: 0; transform: translateX(-56px) scale(0.97); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes slide-from-right {
+  from { opacity: 0; transform: translateX(56px) scale(0.97); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes photo-settle {
+  from { transform: scale(1.12); }
+  to { transform: none; }
+}
+
+@keyframes pip-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes pip-progress {
+  from { transform: scaleX(0.08); }
+  to { transform: scaleX(1); }
+}
+
+/* Scale only: Tailwind v4 centres the glow with the separate `translate` property. */
+@keyframes glow-breathe {
+  0%, 100% { opacity: 0.2; transform: scale(0.92); }
+  50% { opacity: 0.32; transform: scale(1.06); }
+}
+
+@keyframes sheen {
+  from { transform: translateX(-120%) skewX(-20deg); }
+  to { transform: translateX(220%) skewX(-20deg); }
+}
+
+/* Each hero word sits in a mask; padding keeps italic overhang and descenders unclipped. */
+.word-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding: 0 0.08em 0.14em;
+  margin: 0 -0.08em -0.14em;
+}
+
+.word-rise { display: inline-block; }
+
+/* Static look of the decorative PiP "video": a sunset over a lake, like the photo. */
+.pip-scene {
+  background:
+    linear-gradient(180deg, transparent 55%, rgb(0 0 0 / 0.45) 100%),
+    radial-gradient(60% 50% at 50% 58%, #ffb26b 0%, transparent 70%),
+    linear-gradient(180deg, #3b2a4a 0%, #c8604a 48%, #2a1c22 52%, #120d10 100%);
+}
+
+/* Download button: soft glow halo + a light sweep on hover (opacity/transform only).
+ * No z-index on the button itself, so the halo (z -1) sits behind it, inside the nearest
+ * stacking context. The sweep lives in .btn-sheen, which clips it to the pill shape. */
+.btn-download::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(closest-side, rgb(255 68 56 / 0.6), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.btn-download:hover::before { opacity: 1; }
+.btn-sheen {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+.btn-sheen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.35), transparent);
+  transform: translateX(-120%) skewX(-20deg);
+}
+.btn-arrow { transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.btn-download:hover .btn-arrow { transform: translateY(2px); }
+
+/* Detail cards: soft light that follows the mouse (position set by SpotlightList). */
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(320px circle at var(--x, 50%) var(--y, 50%), rgb(255 68 56 / 0.1), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.spotlight:hover::before { opacity: 1; }
+
+/* Logo: the liquid "sloshes" when you hover the wordmark. */
+.logo-mark { transition: transform 0.6s cubic-bezier(0.3, 1.6, 0.4, 1); }
+.group:hover .logo-mark { transform: rotate(-14deg); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-in {
+    animation: hero-in 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: var(--delay, 0s);
+  }
+  .hero-image-in { animation-name: hero-image-in; animation-duration: 1.2s; }
+
+  .word-rise {
+    animation: word-rise 0.9s cubic-bezier(0.2, 0.75, 0.15, 1) both;
+    animation-delay: var(--delay, 0s);
+  }
+
+  .pip-bob { animation: pip-bob 5s ease-in-out infinite; }
+  .pip-progress { animation: pip-progress 14s linear infinite; }
+  .glow-breathe { animation: glow-breathe 7s ease-in-out infinite; }
+  .btn-download:hover .btn-sheen::after { animation: sheen 0.9s ease; }
+
+  @supports (animation-timeline: view()) {
+    .reveal,
+    .slide-from-left,
+    .slide-from-right,
+    .photo-settle {
+      animation: reveal linear both;
+      animation-timeline: view();
+      /* --stagger shifts each element's window so siblings arrive one after another. */
+      animation-range: entry var(--stagger, 0%) entry calc(45% + var(--stagger, 0%));
+    }
+    .slide-from-left { animation-name: slide-from-left; animation-range: entry 0% entry 60%; }
+    .slide-from-right { animation-name: slide-from-right; animation-range: entry 0% entry 60%; }
+    .photo-settle { animation-name: photo-settle; animation-range: entry 0% cover 50%; }
+  }
+}
