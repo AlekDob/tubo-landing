@@ -1,61 +1,33 @@
-"use client";
-
-import { useState, useEffect } from "react";
+import { DownloadButton } from "./DownloadButton";
 
 const NAV_LINKS = [
   { href: "#features", label: "Features" },
   { href: "#download", label: "Download" },
-  { href: "https://github.com/AleKDob/tubo", label: "GitHub" },
 ] as const;
 
+// Server component: the "solid on scroll" effect is a CSS scroll timeline (.nav-shell).
 export function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-white/10"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <Logo />
-        <NavLinks />
-      </div>
-    </nav>
+    <header className="nav-shell fixed inset-x-0 top-0 z-50">
+      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
+        <Wordmark />
+        <div className="flex items-center gap-6">
+          {NAV_LINKS.map(({ href, label }) => (
+            <a key={href} href={href} className="hidden text-sm text-muted transition-colors hover:text-foreground sm:block">
+              {label}
+            </a>
+          ))}
+          <DownloadButton size="sm" label="Download" />
+        </div>
+      </nav>
+    </header>
   );
 }
 
-function Logo() {
+export function Wordmark() {
   return (
-    <a href="#" className="text-xl font-bold tracking-tight">
-      Tub<span className="text-[#FF0033]">o</span>
+    <a href="/" className="text-xl font-semibold tracking-tight" aria-label="Tubo home">
+      Tub<span className="text-accent">o</span>
     </a>
-  );
-}
-
-function NavLinks() {
-  return (
-    <div className="flex items-center gap-8">
-      {NAV_LINKS.map(({ href, label }) => (
-        <a
-          key={href}
-          href={href}
-          className="text-sm text-white/70 hover:text-white transition-colors"
-          {...(href.startsWith("http")
-            ? { target: "_blank", rel: "noopener noreferrer" }
-            : {})}
-        >
-          {label}
-        </a>
-      ))}
-    </div>
   );
 }

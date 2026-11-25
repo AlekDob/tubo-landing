@@ -1,8 +1,9 @@
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
-import { Features } from "@/components/Features";
-import { Compatibility } from "@/components/Compatibility";
-import { CTA } from "@/components/CTA";
+import { Statement } from "@/components/Statement";
+import { Stories } from "@/components/Stories";
+import { FeatureGrid } from "@/components/FeatureGrid";
+import { Download } from "@/components/Download";
 import { Footer } from "@/components/Footer";
 
 export default function Home() {
@@ -11,9 +12,10 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <Features />
-        <Compatibility />
-        <CTA />
+        <Statement />
+        <Stories />
+        <FeatureGrid />
+        <Download />
       </main>
       <Footer />
     </>

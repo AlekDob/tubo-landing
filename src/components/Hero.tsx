@@ -1,42 +1,35 @@
 import Image from "next/image";
+import heroDesk from "@/assets/hero-desk.webp";
+import { REQUIREMENTS } from "@/lib/site";
+import { DownloadButton } from "./DownloadButton";
+
+// Staggers the CSS hero-in animation via a custom property.
+const delay = (seconds: number) => ({ "--delay": `${seconds}s` }) as React.CSSProperties;
 
 export function Hero() {
   return (
-    <section className="relative pt-32 pb-20 px-6 overflow-hidden">
-      <GradientBackground />
-      <div className="max-w-4xl mx-auto text-center relative z-10">
-        <HeroContent />
+    <section className="relative overflow-hidden px-4 pt-32 sm:px-6 md:pt-40">
+      <div className="mx-auto max-w-4xl text-center">
+        <HeroCopy />
         <HeroActions />
-        <AppScreenshot />
       </div>
+      <HeroImage />
     </section>
   );
 }
 
-function GradientBackground() {
-  return (
-    <div
-      className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] rounded-full opacity-20 blur-3xl pointer-events-none"
-      style={{
-        background:
-          "radial-gradient(ellipse, #FF0033 0%, transparent 70%)",
-      }}
-    />
-  );
-}
-
-function HeroContent() {
+function HeroCopy() {
   return (
     <>
-      <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight animate-fade-in-up">
-        The native YouTube app
-        <br />
-        for <span className="text-[#FF0033]">macOS</span>
+      <p className="hero-in text-sm text-muted">Free · Native · For macOS</p>
+      <h1 className="hero-in mt-5 text-[2.6rem] font-semibold leading-[1.02] tracking-[-0.035em] sm:text-7xl md:text-8xl" style={delay(0.08)}>
+        YouTube, at home
+        <span className="block font-serif font-normal italic tracking-[-0.01em] text-accent">on your Mac.</span>
       </h1>
-      <p className="mt-6 text-lg md:text-xl text-white/60 max-w-2xl mx-auto leading-relaxed animate-fade-in-up-delay-1">
-        Tubo is a free YouTube desktop app for Mac with multi-tab browsing,
-        Picture-in-Picture, media keys, and Liquid Glass UI — built
-        with pure Apple frameworks, no Electron.
+      <p className="hero-in mx-auto mt-7 max-w-xl text-lg leading-relaxed text-muted" style={delay(0.16)}>
+        Tubo is a small, native app for YouTube and YouTube Music. Tabs like a
+        browser, Picture-in-Picture that just works, and a play key that finally
+        does what you expect.
       </p>
     </>
   );
@@ -44,38 +37,33 @@ function HeroContent() {
 
 function HeroActions() {
   return (
-    <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up-delay-2">
-      <a
-        href="#download"
-        className="bg-[#FF0033] hover:bg-[#E0002D] text-white font-medium rounded-full px-8 py-3 transition-colors"
-      >
-        Download for macOS
-      </a>
-      <a
-        href="https://github.com/AleKDob/tubo"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="border border-white/20 hover:border-white/40 text-white font-medium rounded-full px-8 py-3 transition-colors"
-      >
-        View on GitHub
-      </a>
+    <div className="hero-in mt-10 flex flex-col items-center gap-4" style={delay(0.24)}>
+      <div className="flex flex-wrap items-center justify-center gap-3">
+        <DownloadButton />
+        <a href="#features" className="inline-flex h-12 items-center rounded-full border border-line px-6 text-[15px] text-foreground transition hover:border-white/25">
+          See what it does
+        </a>
+      </div>
+      <p className="text-xs text-faint">{REQUIREMENTS}</p>
     </div>
   );
 }
 
-function AppScreenshot() {
+// Real app screenshot composited onto a generated desk photo, so the UI shown is the actual app.
+function HeroImage() {
   return (
-    <div className="mt-16 animate-fade-in-up-delay-3 animate-float">
-      <div className="max-w-3xl mx-auto rounded-xl overflow-hidden shadow-2xl">
+    <div className="hero-in relative mx-auto mt-16 max-w-6xl md:mt-20" style={delay(0.36)}>
+      <div className="aspect-[4/3] overflow-hidden rounded-2xl ring-1 ring-line sm:aspect-auto md:rounded-3xl">
         <Image
-          src="/tubo-screenshot.webp"
-          alt="Tubo — YouTube player nativo per macOS con Liquid Glass UI"
-          width={1568}
-          height={1065}
-          priority
-          className="w-full h-auto"
+          src={heroDesk}
+          alt="Tubo open on a MacBook on a desk at night, playing a YouTube video in a tab"
+          placeholder="blur"
+          preload
+          sizes="(min-width: 1152px) 1152px, 100vw"
+          className="h-full w-full object-cover sm:h-auto"
         />
       </div>
+      <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-background to-transparent" />
     </div>
   );
 }

@@ -1,17 +1,20 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Inter, Instrument_Serif } from "next/font/google";
+import { APP_VERSION, AUTHOR, DOWNLOAD_URL, SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
+const serif = Instrument_Serif({
+  variable: "--font-serif",
   subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
 });
 
-const SITE_URL = "https://tubo.app";
-const SITE_NAME = "Tubo";
-const TITLE = "Tubo — Native YouTube App for macOS | PiP, Tabs & Liquid Glass";
+const TITLE = "Tubo — A native Mac app for YouTube | Tabs, PiP & Liquid Glass";
 const DESCRIPTION =
-  "Tubo is a free native macOS YouTube desktop app with Picture-in-Picture, multi-tab browsing, media keys, and Liquid Glass UI. No Electron, no bloat — pure Apple performance.";
+  "Tubo is a free, native macOS app for watching YouTube and YouTube Music. Browser-style tabs, Picture-in-Picture, media keys and a Liquid Glass look on macOS Tahoe.";
+const OG_IMAGE = { url: "/og-image.jpg", width: 1200, height: 630, alt: "Tubo running on a MacBook" };
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -21,55 +24,33 @@ export const metadata: Metadata = {
   keywords: [
     "youtube app for mac",
     "youtube desktop app macos",
-    "youtube wrapper mac",
-    "youtube pip macos",
     "youtube picture in picture mac",
-    "youtube native app mac",
+    "youtube music mac app",
     "youtube floating window mac",
     "youtube always on top mac",
-    "youtube senza pubblicità mac",
-    "app youtube macos",
     "liquid glass youtube",
     "macos youtube client",
   ],
-  authors: [{ name: "Alek Dobrohotov" }],
-  creator: "Alek Dobrohotov",
+  authors: [{ name: AUTHOR.name, url: AUTHOR.url }],
+  creator: AUTHOR.name,
   publisher: SITE_NAME,
   applicationName: SITE_NAME,
-  category: "Productivity",
+  category: "Entertainment",
   openGraph: {
     type: "website",
     locale: "en_US",
-    alternateLocale: "it_IT",
     url: "/",
     siteName: SITE_NAME,
     title: TITLE,
     description: DESCRIPTION,
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Tubo — Native YouTube App for macOS",
-      },
-    ],
+    images: [OG_IMAGE],
   },
-  twitter: {
-    card: "summary_large_image",
-    title: TITLE,
-    description: DESCRIPTION,
-    images: ["/og-image.png"],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: { index: true, follow: true },
-  },
-  other: {
-    "theme-color": "#0a0a0a",
-    "apple-mobile-web-app-title": SITE_NAME,
-  },
+  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION, images: [OG_IMAGE.url] },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
+  other: { "apple-mobile-web-app-title": SITE_NAME },
 };
+
+export const viewport: Viewport = { themeColor: "#0b0a0a" };
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -78,35 +59,24 @@ const jsonLd = {
   description: DESCRIPTION,
   url: SITE_URL,
   applicationCategory: "MultimediaApplication",
-  operatingSystem: "macOS 13+",
-  offers: {
-    "@type": "Offer",
-    price: "0",
-    priceCurrency: "USD",
-  },
-  author: {
-    "@type": "Person",
-    name: "Alek Dobrohotov",
-  },
-  softwareVersion: "1.0",
-  downloadUrl: `${SITE_URL}/#download`,
+  operatingSystem: "macOS 13 or later",
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  author: { "@type": "Person", name: AUTHOR.name, url: AUTHOR.url },
+  softwareVersion: APP_VERSION,
+  downloadUrl: `${SITE_URL}${DOWNLOAD_URL}`,
+  screenshot: `${SITE_URL}${OG_IMAGE.url}`,
   featureList: [
-    "Multi-Tab YouTube Browsing",
-    "Picture-in-Picture (PiP)",
-    "Native Media Keys & Now Playing",
-    "Liquid Glass UI (macOS Tahoe)",
-    "Zero External Dependencies",
-    "Privacy-First — No Tracking",
+    "Browser-style tabs for YouTube and YouTube Music",
+    "Native Picture-in-Picture",
+    "Media keys and Now Playing",
+    "Liquid Glass design on macOS Tahoe",
+    "Always-on-top floating window",
   ],
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} antialiased`}>
+    <html lang="en" className={`${inter.variable} ${serif.variable} antialiased`}>
       <head>
         <script
           type="application/ld+json"
