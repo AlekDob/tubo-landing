@@ -1,5 +1,6 @@
 // Single source of truth for URLs and release info used by metadata, SEO routes and UI.
-export const SITE_URL = "https://tubo.you";
+// www is the primary domain: Vercel redirects tubo.you -> www.tubo.you, so canonical must match.
+export const SITE_URL = "https://www.tubo.you";
 export const SITE_NAME = "Tubo";
 
 // The signed + notarized DMG is copied here by the release flow (not committed by hand).

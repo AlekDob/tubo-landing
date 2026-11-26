@@ -4,6 +4,8 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Privacy Policy — Tubo",
   description: "Privacy Policy for Tubo, the native YouTube player for macOS.",
+  // Own canonical, otherwise it inherits "/" from the layout and Google skips this page.
+  alternates: { canonical: "/privacy" },
 };
 
 export default function PrivacyPage() {
